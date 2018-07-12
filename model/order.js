@@ -1,0 +1,38 @@
+const mongoose = require("mongoose");
+const schema= new mongoose.Schema({
+    productId:{
+        type:mongoose.Schema.Types.ObjectId,
+        required:[true,"商品id不能为空"]
+    },
+    productName:{
+        type:String,
+        required:[true,"商品名字不能为空"]
+    },
+    productPrice:{
+        type:String,
+        required:[true,"商品价格不能为空"]
+    },
+    count:{
+        type:Number,
+        required:[true,"商品数量不能为空"],
+        min:[1,"商品数量不能小于1"]
+    },
+    total:{
+        type:String
+    },
+    status:{
+        type:String,
+        default:"unpay"
+    },
+    created:{
+        type:Date,
+        default:Date.now()
+    },
+    paytime:{
+        type:Date
+    },
+    cancletime:{
+        type:Date
+    }
+})
+module.exports=mongoose.model("order",schema);
